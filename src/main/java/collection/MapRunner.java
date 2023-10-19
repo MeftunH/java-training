@@ -23,8 +23,21 @@ public class MapRunner {
         // bunu  kullanma bu daha yavas
         Map<String,Person> personMap22=new HashMap<>(60_000,
                 0.9f);
-        //DSL satira fokus olup onun disina cikmiyor ve makro okuma yapiyor
-        personMap.put("1",
+        //DSL(domain specific language) satira fokus olup onun disina cikmiyor ve makro okuma yapiyor
+        personMap.put("Adam",
+                Person.builder()
+                        .withName("Adam")
+                        .withAge(1)
+                        .build());
+
+        //ekleme yaparken eger ayni key varsa sonuncuyu alir
+        personMap.put("Adam_test",
+                Person.builder()
+                        .withName("Adam")
+                        .withAge(1)
+                        .build());
+        //boylece birden fazla keyi kullanabiliyoruz arama yparaken
+        personMap.put("test_Adam_test",
                 Person.builder()
                         .withName("Adam")
                         .withAge(1)
