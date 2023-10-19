@@ -21,6 +21,17 @@ public class FunctionalRunner {
 
         IExecute execute2=(w,p)->prefix+" "+w+" - "+p;
         System.out.println(execute2.execute("test lambda", 10));
-    }
 
+        IExecute execute3=FunctionalRunner::xyz;
+        FunctionalRunner f=new FunctionalRunner();
+        IExecute execute4=f::abc;
+    }
+    public static String xyz(String a,Integer b)
+    {
+        return a+" "+b;
+    }
+    public String abc(String a, Integer b)
+    {
+        return a+":"+b;
+    }
 }
