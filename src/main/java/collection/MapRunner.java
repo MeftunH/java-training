@@ -1,7 +1,9 @@
 package collection;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MapRunner {
@@ -42,5 +44,22 @@ public class MapRunner {
                         .withName("Adam")
                         .withAge(1)
                         .build());
+        //traverse 3 yolu var
+        //icinde verileri collection olarak alip donebiliriz
+        Collection<Person> values = personMap.values();
+        for (Person value : values) {
+            System.out.println(value);
+        }
+        //2,yol keyleri alabiliyoruz
+        //bunu cok kullanma ne aradigini cok iyi bilmen lazim
+        Set<String> stringsSet = personMap.keySet();
+        for (String s : stringsSet) {
+            System.out.println(s);
+        }
+        //3.yol entryleri alabiliyoruz
+        Set<Map.Entry<String, Person>> entries = personMap.entrySet();
+        for (Map.Entry<String, Person> entry : entries) {
+            System.out.println(entry.getKey()+" "+entry.getValue());
+        }
     }
 }
