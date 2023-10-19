@@ -23,7 +23,11 @@ public class MapRunner {
         // bunu  kullanma bu daha yavas
         Map<String,Person> personMap22=new HashMap<>(60_000,
                 0.9f);
-
-        personMap.put("1",Person.builder().withName("Adam").withAge(1).build());
+        //DSL satira fokus olup onun disina cikmiyor ve makro okuma yapiyor
+        personMap.put("1",
+                Person.builder()
+                        .withName("Adam")
+                        .withAge(1)
+                        .build());
     }
 }
