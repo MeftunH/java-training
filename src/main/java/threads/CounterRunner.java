@@ -1,6 +1,7 @@
 package threads;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class CounterRunner {
     public static void main(String[] args) {
@@ -17,12 +18,18 @@ public class CounterRunner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             ExecutorService executorService = null;
-            executorService.submit(() -> {
+            Future<String> submit = executorService.submit(() -> {
                 System.out.println("CounterRunner");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("CounterRunner finished");
+                return "CounterRunner finished";
             });
-            executorService.shutdown();
+
         }
     }
 }
