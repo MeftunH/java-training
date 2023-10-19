@@ -3,6 +3,8 @@ package strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.function.Supplier;
+
 public class StringRunner {
     private static final Logger logger = LoggerFactory.getLogger(StringRunner.class);
     public static void main(String[] args) {
@@ -53,6 +55,19 @@ public class StringRunner {
         //bosu bosuna obje yaratmamis olursunuz garbage collectoru rahatlatmis olursunuz
         if(logger.isDebugEnabled()){
             logger.debug("Hello from Log4j 2 - num: {}");
+        }
+        //yanlis cogu zaman cagirmayacak
+//        test("Hello",true);
+        //dogru
+        //lazy initialization ihtiyac oldugunda islemi yapiyoruz
+        test(()->"Hello"+stringBuilder,false);
+    }
+
+    public static void test(Supplier<String> string, boolean b1)
+    {
+        if (b1)
+        {
+            System.out.println(string.get());
         }
     }
 }

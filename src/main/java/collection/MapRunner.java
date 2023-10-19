@@ -12,7 +12,7 @@ public class MapRunner {
         //BUYUK CACHEDE BU SEKILDE OLACAK
         Map<String,Person> personConcurrentMap=new ConcurrentHashMap<>(1_200_000,0.9f,1_000);
         for (int i = 0; i < 1_000_000; i++) {
-            Person person=new Person();
+            Person person=new Person("Person"+i,i,"personMail"+i);
             personMap.put(person.getName(),person);
             personMap2.put(person.getName(),person);
             personConcurrentMap.put(person.getName(),person);
@@ -24,6 +24,6 @@ public class MapRunner {
         Map<String,Person> personMap22=new HashMap<>(60_000,
                 0.9f);
 
-        personMap.put("1",new Person());
+        personMap.put("1",Person.builder().withName("Adam").withAge(1).build());
     }
 }
