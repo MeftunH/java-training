@@ -29,9 +29,24 @@ public class ListRunner {
         for (int i = 0; i < 1000000; i++) {
             strings.add("a");
         }
+        strings = new ArrayList<>();
         System.gc();
         Thread.sleep(1000);
+        for (int i = 0; i < 1000000; i++) {
+            strings.add("a");
+        }
         System.out.println("Delta = " + (System.currentTimeMillis() - delta));
+        //remove
+        delta = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            strings.remove(0);
+        }
+        System.out.println("Delta = " + (System.currentTimeMillis() - delta));
+        stringList.addAll(strings); //ok
+        stringList.contains("a"); //NOT OK
+        stringList.containsAll(strings); //NOT OK
+        stringList.retainAll(strings); //NOT OK
+
     }
     public void method1(){
        List<String> strings = new ArrayList<>();
